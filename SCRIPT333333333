@@ -1,0 +1,71 @@
+-- Configuração da interface principal
+local ScreenGui = Instance.new("ScreenGui")
+local KeyFrame = Instance.new("Frame")
+local KeyTextBox = Instance.new("TextBox")
+local VerifyKeyButton = Instance.new("TextButton")
+local MainFrame = Instance.new("Frame")
+local SpeedButton = Instance.new("TextButton")
+local SpeedTextBox = Instance.new("TextBox")
+
+-- Interface de tela
+ScreenGui.Parent = game.CoreGui
+
+-- Configuração do frame de chave
+KeyFrame.Name = "KeyFrame"
+KeyFrame.Parent = ScreenGui
+KeyFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+KeyFrame.Position = UDim2.new(0.3, 0, 0.3, 0)
+KeyFrame.Size = UDim2.new(0, 300, 0, 150)
+
+KeyTextBox.Parent = KeyFrame
+KeyTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KeyTextBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+KeyTextBox.Size = UDim2.new(0.8, 0, 0.2, 0)
+KeyTextBox.PlaceholderText = "Digite a chave aqui"
+
+VerifyKeyButton.Parent = KeyFrame
+VerifyKeyButton.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+VerifyKeyButton.Position = UDim2.new(0.25, 0, 0.6, 0)
+VerifyKeyButton.Size = UDim2.new(0.5, 0, 0.2, 0)
+VerifyKeyButton.Text = "Verificar Chave"
+
+-- Configuração do painel principal
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+MainFrame.Position = UDim2.new(0.3, 0, 0.3, 0)
+MainFrame.Size = UDim2.new(0, 300, 0, 400)
+MainFrame.Visible = false
+
+SpeedButton.Name = "SpeedButton"
+SpeedButton.Parent = MainFrame
+SpeedButton.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
+SpeedButton.Position = UDim2.new(0.1, 0, 0.2, 0)
+SpeedButton.Size = UDim2.new(0.8, 0, 0.1, 0)
+SpeedButton.Text = "Mudar Velocidade"
+
+SpeedTextBox.Parent = MainFrame
+SpeedTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SpeedTextBox.Position = UDim2.new(0.1, 0, 0.35, 0)
+SpeedTextBox.Size = UDim2.new(0.8, 0, 0.1, 0)
+SpeedTextBox.PlaceholderText = "Digite a velocidade"
+
+-- Verificação de chave
+local correctKey = "SUA_CHAVE_AQUI" -- Substitua por sua chave correta
+
+VerifyKeyButton.MouseButton1Click:Connect(function()
+    if KeyTextBox.Text == correctKey then
+        KeyFrame.Visible = false
+        MainFrame.Visible = true
+    else
+        KeyTextBox.Text = "Chave incorreta!"
+    end
+end)
+
+-- Função de velocidade
+SpeedButton.MouseButton1Click:Connect(function()
+    local speed = tonumber(SpeedTextBox.Text)
+    if speed then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+    end
+end)
