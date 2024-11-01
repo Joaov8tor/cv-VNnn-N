@@ -51,7 +51,7 @@ SpeedTextBox.Size = UDim2.new(0.8, 0, 0.1, 0)
 SpeedTextBox.PlaceholderText = "Digite a velocidade"
 
 -- Verificação de chave
-local correctKey = "SUA_CHAVE_AQUI" -- Substitua por sua chave correta
+local correctKey = "nmRRgLW1ijGGo2CMpbSuJRm24OnkH9c36aPR3sE8e7OlzCsyLis6SUTIr5WGByvh" -- Substitua por sua chave correta
 
 VerifyKeyButton.MouseButton1Click:Connect(function()
     if KeyTextBox.Text == correctKey then
